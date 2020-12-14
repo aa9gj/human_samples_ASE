@@ -19,8 +19,10 @@ split_df_counts<-function(list){
 split_df_counts(counts_data)
 ##function to analyze the data. the x is one of those counter wasp files. notice it conducts a binomial test and then fdr correct it.
 ASE_function<-function(x) {
-  x<-filter(x, variantID != ".")
-  x<-filter(x, totalCount > 20)
+  x$percent_ref <- x$refCount/x$totalCount
+  x <- filter(x, percent_ref > 0.10 & percent_ref < 0.90)
+  #x<-filter(x, variantID != ".")
+  x<-filter(x, totalCount >= 20)
   for (i in 1:length(x$contig)) {
     temp = binom.test(x$altCount[i], x$totalCount[i], p = 0.5)
     x$binom_p[i] = temp$p.value
