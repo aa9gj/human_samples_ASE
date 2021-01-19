@@ -1,5 +1,6 @@
 #### This is the code to analyze Allele Specific Expression in 17 bone samples from the human bone project.
-#### While we have presented both protien coding and lncRNAs in this analysis, our focus is on the latter. 
+#### While we have presented both protein coding and lncRNAs in this analysis, our focus is on the latter. 
+#### This code is completely automated
 #### Load packages and set working directory
 
 library(data.table)
